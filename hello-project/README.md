@@ -1,1 +1,1 @@
-# learn-go-with-tests
+Test driven develoment in Go
