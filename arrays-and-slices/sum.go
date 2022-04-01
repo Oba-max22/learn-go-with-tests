@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func Sum(numbers [5]int) int {
+func Sum(numbers []int) int {
 	sum := 0
 	for _, number := range numbers {
 		sum += number
@@ -12,7 +12,26 @@ func Sum(numbers [5]int) int {
 	return sum
 }
 
+func SumAll(numbersToSum ...[]int) (sums []int) {
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
+	}
+	return
+}
+
+func SumAllTails(numbersToSum ...[]int) (sums []int) {
+	for _, numbers := range numbersToSum {
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := numbers[1:]
+			sums = append(sums, Sum(tail))
+		}
+	}
+	return
+}
+
 func main () {
-	array := [5]int{1, 2, 3, 4, 5}
+	array := []int{1, 2, 3, 4, 5}
 	fmt.Println(Sum(array))
 }
